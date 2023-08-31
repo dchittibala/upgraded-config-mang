@@ -1,0 +1,7 @@
+{
+    "inventory":{
+        "hosts": ["3.80.105.244","3.80.61.136"],
+        "username": "root",
+        "password": "xxxxxx"
+    }
+}
