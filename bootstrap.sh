@@ -15,8 +15,6 @@ if [ "$(uname)" == "Darwin" ]; then
 elif [ "$(uname -s)" == "Linux" ]; then
     # Do something under GNU/Linux platform
     which js
-    
-    ## Did we found IP address? Use exit status of the grep command ##
     if [ $? -eq 0 ]
     then
         echo "Go is already installed."
