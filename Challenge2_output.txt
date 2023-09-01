@@ -1,0 +1,415 @@
+➜ go run main.go -inventory ./inventory.json -tasks ./tasks.json
+
+Running on Host: 3.80.105.244, Action: packageInstall
+Running command: apt -qq list apache2
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+apache2/bionic-updates,bionic-security,now 2.4.29-1ubuntu4.27 amd64 [installed]
+Package already installed.
+Running command: apt -qq list php
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+php/bionic,now 1:7.2+60ubuntu1 all [installed]
+Package already installed.
+Running command: apt -qq list libapache2-mod-php
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+libapache2-mod-php/bionic,now 1:7.2+60ubuntu1 all [installed]
+Package already installed.
+
+Running on Host: 3.80.105.244, Action: removeFile
+Running command: [ -f /var/www/html/index.html ] && echo 'exists' || echo 'not_exists'
+not_exists
+File doesnt Exists: /var/www/html/index.html
+
+Running on Host: 3.80.105.244, Action: remoteFile
+Running command: [ -f /var/www/html/index.php ] && cmp -s /var/www/html/index.php /tmp/temp1693496732 || echo 'different'
+Running command: rm -rf /tmp/temp1693496732
+Running command: [[ $(stat -c '%a %U %G' /var/www/html/index.php) = "644 root root" ]] && echo 'correct' || echo 'incorrect'
+correct
+
+Running on Host: 3.80.105.244, Action: serviceStart
+Running command: sudo systemctl is-active apache2
+active
+Service is already active.
+
+Running on Host: 3.80.61.136, Action: packageInstall
+Running command: apt -qq list apache2
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+apache2/bionic-updates,bionic-security 2.4.29-1ubuntu4.27 amd64
+Installing package: apache2
+Running command: sudo apt install -y apache2
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  apache2-bin apache2-data apache2-utils libapr1 libaprutil1
+  libaprutil1-dbd-sqlite3 libaprutil1-ldap liblua5.2-0 ssl-cert
+Suggested packages:
+  www-browser apache2-doc apache2-suexec-pristine | apache2-suexec-custom
+  openssl-blacklist
+The following NEW packages will be installed:
+  apache2 apache2-bin apache2-data apache2-utils libapr1 libaprutil1
+  libaprutil1-dbd-sqlite3 libaprutil1-ldap liblua5.2-0 ssl-cert
+0 upgraded, 10 newly installed, 0 to remove and 69 not upgraded.
+Need to get 1730 kB of archives.
+After this operation, 7000 kB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 libapr1 amd64 1.6.3-2 [90.9 kB]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libaprutil1 amd64 1.6.1-2ubuntu0.1 [84.6 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libaprutil1-dbd-sqlite3 amd64 1.6.1-2ubuntu0.1 [10.6 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libaprutil1-ldap amd64 1.6.1-2ubuntu0.1 [8752 B]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 liblua5.2-0 amd64 5.2.4-1.1build1 [108 kB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 apache2-bin amd64 2.4.29-1ubuntu4.27 [1071 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 apache2-utils amd64 2.4.29-1ubuntu4.27 [83.3 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 apache2-data all 2.4.29-1ubuntu4.27 [160 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 apache2 amd64 2.4.29-1ubuntu4.27 [95.1 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 ssl-cert all 1.0.39 [17.0 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin:
+Fetched 1730 kB in 0s (30.6 MB/s)
+Selecting previously unselected package libapr1:amd64.
+(Reading database ... 85476 files and directories currently installed.)
+Preparing to unpack .../0-libapr1_1.6.3-2_amd64.deb ...
+Unpacking libapr1:amd64 (1.6.3-2) ...
+Selecting previously unselected package libaprutil1:amd64.
+Preparing to unpack .../1-libaprutil1_1.6.1-2ubuntu0.1_amd64.deb ...
+Unpacking libaprutil1:amd64 (1.6.1-2ubuntu0.1) ...
+Selecting previously unselected package libaprutil1-dbd-sqlite3:amd64.
+Preparing to unpack .../2-libaprutil1-dbd-sqlite3_1.6.1-2ubuntu0.1_amd64.deb ...
+Unpacking libaprutil1-dbd-sqlite3:amd64 (1.6.1-2ubuntu0.1) ...
+Selecting previously unselected package libaprutil1-ldap:amd64.
+Preparing to unpack .../3-libaprutil1-ldap_1.6.1-2ubuntu0.1_amd64.deb ...
+Unpacking libaprutil1-ldap:amd64 (1.6.1-2ubuntu0.1) ...
+Selecting previously unselected package liblua5.2-0:amd64.
+Preparing to unpack .../4-liblua5.2-0_5.2.4-1.1build1_amd64.deb ...
+Unpacking liblua5.2-0:amd64 (5.2.4-1.1build1) ...
+Selecting previously unselected package apache2-bin.
+Preparing to unpack .../5-apache2-bin_2.4.29-1ubuntu4.27_amd64.deb ...
+Unpacking apache2-bin (2.4.29-1ubuntu4.27) ...
+Selecting previously unselected package apache2-utils.
+Preparing to unpack .../6-apache2-utils_2.4.29-1ubuntu4.27_amd64.deb ...
+Unpacking apache2-utils (2.4.29-1ubuntu4.27) ...
+Selecting previously unselected package apache2-data.
+Preparing to unpack .../7-apache2-data_2.4.29-1ubuntu4.27_all.deb ...
+Unpacking apache2-data (2.4.29-1ubuntu4.27) ...
+Selecting previously unselected package apache2.
+Preparing to unpack .../8-apache2_2.4.29-1ubuntu4.27_amd64.deb ...
+Unpacking apache2 (2.4.29-1ubuntu4.27) ...
+Selecting previously unselected package ssl-cert.
+Preparing to unpack .../9-ssl-cert_1.0.39_all.deb ...
+Unpacking ssl-cert (1.0.39) ...
+Setting up libapr1:amd64 (1.6.3-2) ...
+Setting up apache2-data (2.4.29-1ubuntu4.27) ...
+Setting up ssl-cert (1.0.39) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+Setting up libaprutil1:amd64 (1.6.1-2ubuntu0.1) ...
+Setting up liblua5.2-0:amd64 (5.2.4-1.1build1) ...
+Setting up libaprutil1-ldap:amd64 (1.6.1-2ubuntu0.1) ...
+Setting up libaprutil1-dbd-sqlite3:amd64 (1.6.1-2ubuntu0.1) ...
+Setting up apache2-utils (2.4.29-1ubuntu4.27) ...
+Setting up apache2-bin (2.4.29-1ubuntu4.27) ...
+Setting up apache2 (2.4.29-1ubuntu4.27) ...
+Enabling module mpm_event.
+Enabling module authz_core.
+Enabling module authz_host.
+Enabling module authn_core.
+Enabling module auth_basic.
+Enabling module access_compat.
+Enabling module authn_file.
+Enabling module authz_user.
+Enabling module alias.
+Enabling module dir.
+Enabling module autoindex.
+Enabling module env.
+Enabling module mime.
+Enabling module negotiation.
+Enabling module setenvif.
+Enabling module filter.
+Enabling module deflate.
+Enabling module status.
+Enabling module reqtimeout.
+Enabling conf charset.
+Enabling conf localized-error-pages.
+Enabling conf other-vhosts-access-log.
+Enabling conf security.
+Enabling conf serve-cgi-bin.
+Enabling site 000-default.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache2.service → /lib/systemd/system/apache2.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache-htcacheclean.service → /lib/systemd/system/apache-htcacheclean.service.
+Processing triggers for libc-bin (2.27-3ubuntu1.5) ...
+Processing triggers for systemd (237-3ubuntu10.57) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for ufw (0.36-0ubuntu0.18.04.1) ...
+Processing triggers for ureadahead (0.100.0-21) ...
+package installed.
+Running command: apt -qq list php
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+php/bionic 1:7.2+60ubuntu1 all
+Installing package: php
+Running command: sudo apt install -y php
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libapache2-mod-php7.2 libsodium23 php-common php7.2 php7.2-cli php7.2-common
+  php7.2-json php7.2-opcache php7.2-readline
+Suggested packages:
+  php-pear
+The following NEW packages will be installed:
+  libapache2-mod-php7.2 libsodium23 php php-common php7.2 php7.2-cli
+  php7.2-common php7.2-json php7.2-opcache php7.2-readline
+0 upgraded, 10 newly installed, 0 to remove and 69 not upgraded.
+Need to get 4016 kB of archives.
+After this operation, 17.6 MB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 php-common all 1:60ubuntu1 [12.1 kB]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-common amd64 7.2.24-0ubuntu0.18.04.17 [891 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-json amd64 7.2.24-0ubuntu0.18.04.17 [18.9 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-opcache amd64 7.2.24-0ubuntu0.18.04.17 [166 kB]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-readline amd64 7.2.24-0ubuntu0.18.04.17 [12.2 kB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 libsodium23 amd64 1.0.16-2 [143 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-cli amd64 7.2.24-0ubuntu0.18.04.17 [1410 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libapache2-mod-php7.2 amd64 7.2.24-0ubuntu0.18.04.17 [1352 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2 all 7.2.24-0ubuntu0.18.04.17 [9248 B]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 php all 1:7.2+60ubuntu1 [3084 B]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin:
+Fetched 4016 kB in 0s (41.6 MB/s)
+Selecting previously unselected package php-common.
+(Reading database ... 86191 files and directories currently installed.)
+Preparing to unpack .../0-php-common_1%3a60ubuntu1_all.deb ...
+Unpacking php-common (1:60ubuntu1) ...
+Selecting previously unselected package php7.2-common.
+Preparing to unpack .../1-php7.2-common_7.2.24-0ubuntu0.18.04.17_amd64.deb ...
+Unpacking php7.2-common (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package php7.2-json.
+Preparing to unpack .../2-php7.2-json_7.2.24-0ubuntu0.18.04.17_amd64.deb ...
+Unpacking php7.2-json (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package php7.2-opcache.
+Preparing to unpack .../3-php7.2-opcache_7.2.24-0ubuntu0.18.04.17_amd64.deb ...
+Unpacking php7.2-opcache (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package php7.2-readline.
+Preparing to unpack .../4-php7.2-readline_7.2.24-0ubuntu0.18.04.17_amd64.deb ...
+Unpacking php7.2-readline (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package libsodium23:amd64.
+Preparing to unpack .../5-libsodium23_1.0.16-2_amd64.deb ...
+Unpacking libsodium23:amd64 (1.0.16-2) ...
+Selecting previously unselected package php7.2-cli.
+Preparing to unpack .../6-php7.2-cli_7.2.24-0ubuntu0.18.04.17_amd64.deb ...
+Unpacking php7.2-cli (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package libapache2-mod-php7.2.
+Preparing to unpack .../7-libapache2-mod-php7.2_7.2.24-0ubuntu0.18.04.17_amd64.deb ...
+Unpacking libapache2-mod-php7.2 (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package php7.2.
+Preparing to unpack .../8-php7.2_7.2.24-0ubuntu0.18.04.17_all.deb ...
+Unpacking php7.2 (7.2.24-0ubuntu0.18.04.17) ...
+Selecting previously unselected package php.
+Preparing to unpack .../9-php_1%3a7.2+60ubuntu1_all.deb ...
+Unpacking php (1:7.2+60ubuntu1) ...
+Setting up libsodium23:amd64 (1.0.16-2) ...
+Setting up php-common (1:60ubuntu1) ...
+Created symlink /etc/systemd/system/timers.target.wants/phpsessionclean.timer → /lib/systemd/system/phpsessionclean.timer.
+Setting up php7.2-common (7.2.24-0ubuntu0.18.04.17) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/calendar.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/ctype.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/exif.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/fileinfo.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/ftp.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/gettext.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/iconv.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/pdo.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/phar.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/posix.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/shmop.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/sockets.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/sysvmsg.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/sysvsem.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/sysvshm.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/tokenizer.ini with new version
+Setting up php7.2-readline (7.2.24-0ubuntu0.18.04.17) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/readline.ini with new version
+Setting up php7.2-json (7.2.24-0ubuntu0.18.04.17) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/json.ini with new version
+Setting up php7.2-opcache (7.2.24-0ubuntu0.18.04.17) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/mods-available/opcache.ini with new version
+Setting up php7.2-cli (7.2.24-0ubuntu0.18.04.17) ...
+update-alternatives: using /usr/bin/php7.2 to provide /usr/bin/php (php) in auto mode
+update-alternatives: using /usr/bin/phar7.2 to provide /usr/bin/phar (phar) in auto mode
+update-alternatives: using /usr/bin/phar.phar7.2 to provide /usr/bin/phar.phar (phar.phar) in auto mode
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/cli/php.ini with new version
+Setting up libapache2-mod-php7.2 (7.2.24-0ubuntu0.18.04.17) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.2/apache2/php.ini with new version
+Module mpm_event disabled.
+Enabling module mpm_prefork.
+apache2_switch_mpm Switch to prefork
+apache2_invoke: Enable module php7.2
+Setting up php7.2 (7.2.24-0ubuntu0.18.04.17) ...
+Setting up php (1:7.2+60ubuntu1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.5) ...
+package installed.
+Running command: apt -qq list libapache2-mod-php
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+libapache2-mod-php/bionic 1:7.2+60ubuntu1 all
+Installing package: libapache2-mod-php
+Running command: sudo apt install -y libapache2-mod-php
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  libapache2-mod-php
+0 upgraded, 1 newly installed, 0 to remove and 69 not upgraded.
+Need to get 3212 B of archives.
+After this operation, 16.4 kB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/main amd64 libapache2-mod-php all 1:7.2+60ubuntu1 [3212 B]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin:
+Fetched 3212 B in 0s (136 kB/s)
+Selecting previously unselected package libapache2-mod-php.
+(Reading database ... 86338 files and directories currently installed.)
+Preparing to unpack .../libapache2-mod-php_1%3a7.2+60ubuntu1_all.deb ...
+Unpacking libapache2-mod-php (1:7.2+60ubuntu1) ...
+Setting up libapache2-mod-php (1:7.2+60ubuntu1) ...
+package installed.
+
+Running on Host: 3.80.61.136, Action: removeFile
+Running command: [ -f /var/www/html/index.html ] && echo 'exists' || echo 'not_exists'
+exists
+File exists,removing file: /var/www/html/index.html
+Running command: rm -rf /var/www/html/index.html
+
+Running on Host: 3.80.61.136, Action: remoteFile
+Running command: [ -f /var/www/html/index.php ] && cmp -s /var/www/html/index.php /tmp/temp1693496765 || echo 'different'
+different
+remote file and local file are different updating the remote file /var/www/html/index.php with index.php
+Running command: mv /tmp/temp1693496765 /var/www/html/index.php
+Running command: rm -rf /tmp/temp1693496765
+Running command: [[ $(stat -c '%a %U %G' /var/www/html/index.php) = "644 root root" ]] && echo 'correct' || echo 'incorrect'
+correct
+Restarting service: apache2
+Re-Starting service: apache2
+Running command: sudo systemctl restart apache2
+Service restarted.
+
+Running on Host: 3.80.61.136, Action: serviceStart
+Running command: sudo systemctl is-active apache2
+active
+Service is already active.
