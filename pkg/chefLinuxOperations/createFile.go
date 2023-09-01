@@ -10,61 +10,6 @@ import (
 	"syscall"
 )
 
-// func UpdateFilePerm(filepath string, perms os.FileMode) {
-// 	if _, err := os.Stat(filepath); err != nil {
-// 		log.Fatal("File doesnt exists")
-// 	}
-// 	if validatePermissions(filepath, perms) {
-// 		log.Printf("No change, file has requested permsissions FileName:%s Permissions: %s", filepath, perms.String())
-// 		return
-// 	}
-// 	err := os.Chmod(filepath, perms)
-// 	file := fileInfo(filepath)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// 	fmt.Printf("Permissions of file has be updated FileName:%s: Permissions: %s", filepath, file.Mode().String())
-// }
-
-// func UpdateOwnership(filepath, owner, group string) {
-// 	oname, err := user.Lookup(owner)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	gname, err1 := user.LookupGroup(group)
-// 	if err1 != nil {
-// 		fmt.Println(err)
-// 	}
-// 	// fmt.Println(oname.Uid, stringtoInt(oname.Uid), stringtoInt(gname.Name))
-// 	err = os.Chown(filepath, stringtoInt(oname.Uid), stringtoInt(gname.Gid))
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	} else {
-// 		fmt.Println("File ownership changed successfully")
-// 	}
-// }
-
-// func fileInfo(filepath string) fs.FileInfo {
-// 	file, err := os.Stat(filepath)
-// 	if err != nil {
-// 		log.Fatal("File doesnt exists")
-// 	}
-// 	return file
-// }
-
-// func validatePermissions(filepath string, perms os.FileMode) bool {
-// 	file := fileInfo(filepath)
-// 	return file.Mode() == perms
-// }
-
-//	func stringtoInt(s string) int {
-//		// string to int
-//		i, err := strconv.Atoi(s)
-//		if err != nil {
-//			panic(err)
-//		}
-//		return i
-//	}
 func stringToFileMode(s string) (os.FileMode, error) {
 	mode, err := strconv.ParseUint(s, 8, 32)
 	if err != nil {
