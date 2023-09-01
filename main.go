@@ -66,15 +66,15 @@ func init() {
 }
 
 func main() {
-	hostsData, err := ioutil.ReadFile(*InventoryFile)
-	if err != nil {
-		log.Fatal("Error reading hosts.json:", err)
-	}
-	var hosts InventoryDetails
-	err = json.Unmarshal(hostsData, &hosts)
-	if err != nil {
-		log.Fatal("Error decoding hosts.json:", err)
-	}
+	// hostsData, err := ioutil.ReadFile(*InventoryFile)
+	// if err != nil {
+	// 	log.Fatal("Error reading hosts.json:", err)
+	// }
+	// var hosts InventoryDetails
+	// err = json.Unmarshal(hostsData, &hosts)
+	// if err != nil {
+	// 	log.Fatal("Error decoding hosts.json:", err)
+	// }
 	tasksData, err := ioutil.ReadFile(*TasksFile)
 	if err != nil {
 		log.Fatal("Error reading tasks.json:", err)
