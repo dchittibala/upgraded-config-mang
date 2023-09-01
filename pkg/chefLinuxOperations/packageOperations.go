@@ -8,7 +8,7 @@ import (
 )
 
 func isPackageInstalled(packageName string) (bool, error) {
-	cmd := exec.Command("dpkg", "-l", packageName)
+	cmd := exec.Command("apt", "-qq", "list", packageName)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
@@ -35,7 +35,7 @@ func InstallPackage(packageName string) {
 			log.Fatalf("Failed to install package %s: %v\n", packageName, err)
 		} else {
 			fmt.Printf("Package %s installed successfully.\n", packageName)
-			fmt.Println("output", output)
+			fmt.Println("output", string(output))
 		}
 
 	}
@@ -64,7 +64,7 @@ func RemovePackage(packageName string) {
 			log.Fatalf("Failed to remove package %s: %v\n", packageName, err)
 		} else {
 			fmt.Printf("Package %s removed successfully.\n", packageName)
-			fmt.Println("output", output)
+			fmt.Println("output", string(output))
 		}
 	} else {
 		fmt.Printf("Package %s is not installed.\n", packageName)

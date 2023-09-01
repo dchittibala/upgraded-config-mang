@@ -35,7 +35,7 @@ func StartService(serviceName string) {
 			log.Fatalf("Failed to start service %s: %v\n", serviceName, err)
 		} else {
 			fmt.Printf("Service %s started successfully.\n", serviceName)
-			fmt.Println("output", output)
+			fmt.Println("output", string(output))
 		}
 
 	}
@@ -58,7 +58,7 @@ func StopService(serviceName string) {
 			log.Printf("Failed to stop service %s: %v\n", serviceName, err)
 		} else {
 			fmt.Printf("Service %s stopped successfully.\n", serviceName)
-			fmt.Println("output", output)
+			fmt.Println("output", string(output))
 		}
 	} else {
 		fmt.Printf("Service %s is already stopped.\n", serviceName)
