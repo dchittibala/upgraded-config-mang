@@ -1,26 +1,7 @@
 # upgraded-config-mang
-upgraded-config-mang is a config management tool similar to Ansible. All the executions happen on ssh.
+upgraded-config-mang is a config management tool similar to Chef.
 
-Note: This is repo is tested only on 1.Mac 2.Linux, Also this can support only executions on remote node which are Ubuntu Os-Release
-
-## Inventory File
-The tools takes a inventory file in json format which needs specific key, an example [inventory.json](./inventory.json) will look as follows
-```
-{
-    "inventory":{
-        "hosts": ["3.80.105.244","3.80.61.136"],
-        "username": "root",
-        "password": "xxxxxx"
-    }
-}
-
-```
-Note: This tool is tested only to test against username and password not with keys.
-
-inventory: is a the parent where all hosts have same username and password.
-hosts: is an array of hosts that can be defined.
-username: username to login with
-password: password to login with.
+Note: This is repo is tested only on 2.Ubuntu-Linux, Also this can support only executions on remote node which are Ubuntu Os-Release
 
 ## Tasks File
 The tool takes a tasks file where we defined all the tasks to be run, there is action key which determines what type of task to be run and each action will have its own keys.
@@ -53,9 +34,10 @@ Removes a file from a path
 
 3. #### remoteFile
 Copys a file from local to remote server, It also ensures all the permissions are set properly
+perm needs to have a padding 0, so a perm will look like `0644 || 0777`
 `"depends":{"serviceName":"apache2"}` is an optional field, when provided it will restart the service defined, It ensures that the restart happens only if there is a change in the file 
 ```        
-{ "action": "remoteFile", "localPath": "index.php", "remotePath": "/var/www/html/index.php", "owner":"root", "group": "root", "perm": "644", "depends":{"serviceName":"apache2"}},
+{ "action": "remoteFile", "localPath": "index.php", "remotePath": "/var/www/html/index.php", "owner":"root", "group": "root", "perm": "0644", "depends":{"serviceName":"apache2"}},
 ```
 
 4. #### serviceStart
@@ -99,19 +81,17 @@ This tool uses make to build the binary and spits out binary for linux and darwi
 The tool takes 2 arguments, inventory and tasks
 
 ```
-  -inventory string
-    	inventory file path, must be a JSON, EG: ./inventory.json
   -tasks string
     	Task file path, must be a JSON EG: ./tasks.json
 ```
 
 Example to run the Binary:
 ```
-./upgraded-config-mang-<OSNAME> -inventory ./inventory.json -tasks ./tasks.json
+./upgraded-config-mang-<OSNAME> -tasks ./tasks.json
 ```
 Example to run from Go:
 ```
-go run main.go -inventory ./inventory.json -tasks ./tasks.json
+go run main.go -tasks ./tasks.json
 ```
 
 
