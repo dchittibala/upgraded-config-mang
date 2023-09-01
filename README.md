@@ -1,5 +1,12 @@
 # upgraded-config-mang
-upgraded-config-mang is a config management tool similar to Chef.
+upgraded-config-mang is a config management tool that runs on the remote server to provision a file, install remove packages, start stop services.
+The tool is controlled by a tasks.json file in which all the action items are defined. 
+
+In our challenge we will run the main.go on the host to provision a simple php server. All the necessary files like [tasks.json](./tasks.json), [index.php](./index.php), [bootstrap.sh](./bootstrap.sh) are already part of this repo and we are leveraging those files.
+
+bootstrap.sh will clone the repo and run the main.go, for running main.go we will need go to be installed so bootstrap.sh will take care of installing it.
+Refer below to check on how to download bootstrap.sh on the remote server.
+
 
 Note: This is repo is tested only on 2.Ubuntu-Linux, Also this can support only executions on remote node which are Ubuntu Os-Release
 
