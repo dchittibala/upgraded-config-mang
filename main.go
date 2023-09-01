@@ -28,7 +28,7 @@ type Task struct {
 	RemoteFilePath string   `json:"remotePath"`
 	Owner          string   `json:"owner"`
 	Group          string   `json:"group"`
-	Perm           int      `json:"perm"`
+	Perm           string   `json:"perm"`
 	DirectoryPath  string   `json:"directoryPath"`
 	ServiceName    string   `json:"serviceName"`
 	Depends        struct {

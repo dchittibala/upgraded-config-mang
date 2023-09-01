@@ -2,7 +2,7 @@
     "tasks": [
         { "action": "packageInstall", "packageNames": ["apache2", "php", "libapache2-mod-php"]},
         { "action": "removeFile", "path": "/var/www/html/index.html" },
-        { "action": "remoteFile", "localPath": "index.php", "remotePath": "/var/www/html/index.php", "owner":"root", "group": "root", "perm": "644", "depends":{"serviceName":"apache2"}},
+        { "action": "remoteFile", "localPath": "index.php", "remotePath": "/var/www/html/index.php", "owner":"root", "group": "root", "perm": "0644", "depends":{"serviceName":"apache2"}},
         { "action": "serviceStart", "serviceName": "apache2"}
       ]
 }

@@ -57,16 +57,27 @@ import (
 // 	return file.Mode() == perms
 // }
 
-// func stringtoInt(s string) int {
-// 	// string to int
-// 	i, err := strconv.Atoi(s)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	return i
-// }
+//	func stringtoInt(s string) int {
+//		// string to int
+//		i, err := strconv.Atoi(s)
+//		if err != nil {
+//			panic(err)
+//		}
+//		return i
+//	}
+func stringToFileMode(s string) (os.FileMode, error) {
+	mode, err := strconv.ParseUint(s, 8, 32)
+	if err != nil {
+		return 0, err
+	}
+	return os.FileMode(mode), nil
+}
 
-func RemoteFile(localFilePath, remoteFilePath, desiredOwner, desiredGroup string, perm int) bool {
+func RemoteFile(localFilePath, remoteFilePath, desiredOwner, desiredGroup string, permissions string) bool {
+	perm, err := stringToFileMode(permissions)
+	if err != nil {
+		log.Fatalf("Failed: %v\n", err)
+	}
 	desiredPermissions := os.FileMode(perm)
 	localContents, err := ioutil.ReadFile(localFilePath)
 	if err != nil {
