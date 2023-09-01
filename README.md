@@ -78,7 +78,7 @@ This tool uses make to build the binary and spits out binary for linux and darwi
 ```make binary```
 
 ## Usage 
-The tool takes 2 arguments, inventory and tasks
+The tool takes 1 arguments, tasks
 
 ```
   -tasks string
