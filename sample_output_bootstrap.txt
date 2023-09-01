@@ -1,0 +1,52 @@
+./bootstrap.sh
+/usr/local/go/bin/go
+Go is installed
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic-backports InRelease [83.3 kB]
+Hit:4 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Fetched 172 kB in 0s (467 kB/s)
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+69 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+git is already the newest version (1:2.17.1-1ubuntu0.18).
+0 upgraded, 0 newly installed, 0 to remove and 69 not upgraded.
+fatal: destination path 'upgraded-config-mang' already exists and is not an empty directory.
+
+Running on  Action: packageInstall
+Package apache2 installed successfully.
+output Reading package lists...
+Building dependency tree...
+Reading state information...
+apache2 is already the newest version (2.4.29-1ubuntu4.27).
+0 upgraded, 0 newly installed, 0 to remove and 69 not upgraded.
+
+Package php installed successfully.
+output Reading package lists...
+Building dependency tree...
+Reading state information...
+php is already the newest version (1:7.2+60ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 69 not upgraded.
+
+Package libapache2-mod-php installed successfully.
+output Reading package lists...
+Building dependency tree...
+Reading state information...
+libapache2-mod-php is already the newest version (1:7.2+60ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 69 not upgraded.
+
+
+Running on  Action: removeFile
+Remote file /var/www/html/index.html does not exist.
+
+Running on  Action: remoteFile
+Remote file /var/www/html/index.php already contains the desired contents.
+Remote file /var/www/html/index.php permissions, owner, and group are already as desired.
+
+Running on  Action: serviceStart
+Service apache2 is already running.
+All Tasks Completed
