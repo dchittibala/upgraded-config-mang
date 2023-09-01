@@ -94,6 +94,13 @@ Example to run from Go:
 go run main.go -tasks ./tasks.json
 ```
 
+## Download bootstrap.sh
+ssh to the remote machine where this tool need to run and download the bootstrap.sh
+```
+curl -o ./bootstrap.sh https://raw.githubusercontent.com/reddydinesh427/upgraded-config-mang/main/bootstrap.sh
+chmod +x bootstrap.sh 
+./bootstrap.sh # this will install the necessary components and run the upgrade-config-mang tool
+```
 
 
 
