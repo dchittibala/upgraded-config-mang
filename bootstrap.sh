@@ -1,9 +1,7 @@
 #! /bin/bash
 
-curl -o /tmp/provisioner.tar  https://github.com/reddydinesh427/upgraded-config-mang/releases/download/v1.0.0/provisioner.tar
 
-tar -xf /tmp/provisioner.tar
-rm -rf /tmp/provisioner.tar
+wget -qO- https://github.com/reddydinesh427/upgraded-config-mang/releases/download/v1.0.0/provisioner.tar | tar xvz -C /tmp/provisioner
 
 mkdir /etc/upgraded-config-mang
 mv /tmp/provisioner/ /etc/upgraded-config-mang/
