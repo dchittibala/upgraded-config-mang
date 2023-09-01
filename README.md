@@ -101,6 +101,7 @@ curl -o ./bootstrap.sh https://raw.githubusercontent.com/reddydinesh427/upgraded
 chmod +x bootstrap.sh 
 ./bootstrap.sh # this will install the necessary components and run the upgrade-config-mang tool
 ```
+A sample output is added at [sample_output_bootstrap.txt](./sample_output_bootstrap.txt)
 
 
 
