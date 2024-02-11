@@ -27,7 +27,9 @@ jobs:
   #   - name: Test
   #     run: go test -v ./...
 
-  build:
+  build-changes:
+    outputs:
+      Hello: ${{steps.test.output.hello}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,5 +37,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: test
-      run: echo "Hello"
-  
+      id: test
+      run: |
+        echo "Hello=true" >> $GITHUB_OUTPUT
+        
+      
+
+  deploy-dev:
+    needs: build-changes
+    if: needs.build-changes.outputs.hello != 'true'
+    runs-on: ubuntu-latest
+
+
+  no-deploy:
+    needs: build-changes
+    if: needs.build-changes.outputs.status == 'false'
+    runs-on: ubuntu-latest
