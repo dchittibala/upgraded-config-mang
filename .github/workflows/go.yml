@@ -47,9 +47,18 @@ jobs:
     needs: build-changes
     if: needs.build-changes.outputs.hello != 'true'
     runs-on: ubuntu-latest
-
+    steps:
+    - name: test
+      id: test
+      run: |
+        echo "Hello=true"
 
   no-deploy:
     needs: build-changes
     if: needs.build-changes.outputs.status == 'false'
     runs-on: ubuntu-latest
+    steps:
+    - name: test
+      id: test
+      run: |
+        echo "Hello=true"
