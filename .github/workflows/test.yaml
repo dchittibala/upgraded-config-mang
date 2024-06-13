@@ -1,0 +1,24 @@
+name: Amitesting in testpremise
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          exit 1
+  notify:
+    needs: testrunner-uitest_amitesting-in-testpremise
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: test
+        run: |
+          echo ${{ job.status }}
