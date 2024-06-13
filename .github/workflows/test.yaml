@@ -1,4 +1,4 @@
-name: Amitesting in testpremise
+name: testing
 on:
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ jobs:
         run: |
           exit 1
   notify:
-    needs: testrunner-uitest_amitesting-in-testpremise
+    needs: foo
     runs-on: ubuntu-latest
     if: always()
     steps:
